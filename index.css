@@ -1,3 +1,29 @@
 body {
     margin: 0;
 } 
+
+.hero-section{
+    width: 600px;
+    height: 1160px;
+    margin: 0 auto;
+    background-color: pink;
+}
+
+.logo{
+    width: 600px;
+    height: 170px;
+}
+
+#logo{
+    object-fit:cover;
+}
+
+.menu-section{
+    width: 600px;
+    height: 990px;
+    background-color: black;
+}
+
+.items{
+    margin: 0;
+}
