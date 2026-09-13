@@ -1,79 +1,295 @@
+/* =========================
+   GENERAL
+========================= */
+
+* {
+    box-sizing: border-box;
+}
+
 body {
     margin: 0;
     padding: 0;
-} 
-
-.hero-section{
-    width: 600px;
-    height: 1160px;
-    margin: 0 auto;
-    background-color: pink;
+    font-family: Arial, sans-serif;
+    background-color: #eeeeee;
 }
 
-.logo{
+.hero-section {
+    width: 600px;
+    min-height: 100vh;
+    margin: 0 auto;
+    background-color: white;
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+.logo {
     width: 600px;
     height: 170px;
-    margin: 0;
-
-}
-
-.logo,
-.menu-section,
-.items{
     margin: 0;
     padding: 0;
 }
 
-#logo{
-    object-fit:cover;
-    margin: 0;
+#logo {
+    display: block;
     width: 100%;
     height: 100%;
+    object-fit: cover;
 }
 
-.menu-section{
-    width: 600px;
-    height: 990px;
+
+/* =========================
+   MENU SECTION
+========================= */
+
+.menu-section {
+    width: 100%;
     background-color: white;
 }
 
-.items{
+.items {
+    display: flex;
+    flex-direction: column;
+
+    margin: 0;
+    padding: 0;
+
     list-style: none;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: stretch;
 }
 
-.item{
-    margin: 40px 20px;
+
+/* Individual menu item */
+
+.item {
     display: flex;
-    flex-direction: row;
-    justify-content: start;
     align-items: center;
-    border-bottom: 2px solid gray;
-    margin: 20px 20px;
+
+    margin: 0 20px;
+    padding: 30px 0;
+
+    border-bottom: 1px solid #dddddd;
 }
 
-.image{
-    font-size: 70px;
+
+/* Food emoji */
+
+.image {
+    width: 80px;
+    flex-shrink: 0;
+
+    font-size: 60px;
+    text-align: center;
 }
 
-.item-details{
+
+/* Food information */
+
+.item-details {
     display: flex;
     flex-direction: column;
-    padding-left: 40px;
+
+    padding-left: 25px;
 }
 
-.add-btn{
+.item-details h3 {
+    margin: 0 0 8px;
+    font-size: 22px;
+}
+
+.item-details p {
+    margin: 4px 0;
+    color: #666;
+}
+
+.item-details p:last-child {
+    margin-top: 8px;
+    color: #111;
+    font-weight: bold;
+}
+
+
+/* Add button */
+
+.add-btn {
+    width: 42px;
+    height: 42px;
+
     margin-left: auto;
-    width: 40px ;
-    height: 40px;
+
+    border: 1px solid #cccccc;
     border-radius: 50%;
-    border: 1px solid gray;
+
     background-color: white;
+
+    font-size: 22px;
+    cursor: pointer;
+
+    transition: 0.2s ease;
 }
 
-.add-btn:hover{
-    background-color: gray;
+.add-btn:hover {
+    background-color: #eeeeee;
+    transform: scale(1.05);
+}
+
+
+/* =========================
+   BILL SECTION
+========================= */
+
+.bill-section {
+    width: 510px;
+
+    margin: 40px auto;
+    padding: 30px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    background-color: #f8f8f8;
+
+    border: 1px solid #dddddd;
+    border-radius: 12px;
+
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+
+/* "Your Order" */
+
+.bill-section > h3 {
+    margin: 0 0 35px;
+
+    font-size: 24px;
+    text-align: center;
+}
+
+
+/* =========================
+   BILL ITEMS
+========================= */
+
+.bill-list {
+    width: 100%;
+
+    margin: 0;
+    padding: 0 0 15px;
+
+    list-style: none;
+
+    border-bottom: 2px solid #222;
+}
+
+.billed-items {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    width: 100%;
+
+    margin: 15px 0;
+}
+
+.item-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.item-info h3 {
+    margin: 0;
+    font-size: 18px;
+}
+
+.billed-items p {
+    margin: 0;
+
+    font-weight: bold;
+}
+
+
+/* Remove button */
+
+.remove-btn {
+    padding: 0;
+
+    border: none;
+    background: none;
+
+    color: #777;
+
+    font-size: 13px;
+
+    cursor: pointer;
+}
+
+.remove-btn:hover {
+    color: #222;
+    text-decoration: underline;
+}
+
+
+/* =========================
+   TOTAL
+========================= */
+
+.total-bill {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    width: 100%;
+
+    margin-top: 20px;
+}
+
+.total-bill h3 {
+    margin: 0;
+}
+
+.total-bill p {
+    margin: 0;
+
+    font-size: 20px;
+    font-weight: bold;
+}
+
+
+/* =========================
+   ORDER BUTTON
+========================= */
+
+.order {
+    width: 100%;
+}
+
+.order-btn {
+    width: 100%;
+    height: 55px;
+
+    margin-top: 30px;
+
+    border: none;
+    border-radius: 5px;
+
+    background-color: #16db99;
+    color: white;
+
+    font-size: 17px;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.2s ease;
+}
+
+.order-btn:hover {
+    background-color: #12c98b;
+}
+
+.order-btn:active {
+    transform: scale(0.98);
 }
