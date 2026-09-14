@@ -3,6 +3,8 @@ import { menuArray } from "./data.js"
 const items = document.querySelector(".items")
 const billSection = document.querySelector(".bill-section")
 
+let billList 
+let totalBill
 const order = []
 
 
@@ -77,15 +79,15 @@ function renderBillSection() {
         `
     }
 
-    const billList = document.querySelector(".bill-list")
-    const totalBill = document.querySelector(".total-bill")
+    billList = document.querySelector(".bill-list")
+    totalBill = document.querySelector(".total-bill")
 
-    renderOrder(billList)
-    renderTotalBill(totalBill)
+    renderOrder()
+    renderTotalBill()
 }
 
 
-function renderOrder(billList) {
+function renderOrder() {
 
     let text = ""
 
@@ -122,7 +124,7 @@ function renderOrder(billList) {
 }
 
 
-function renderTotalBill(totalBill) {
+function renderTotalBill() {
 
     const total = addTotal()
 
