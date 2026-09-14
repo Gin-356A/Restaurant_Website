@@ -29,7 +29,32 @@
             </section>
 
             <section class="bill-section"></section>
+            <section class="payment-details">
+                <form id="details-form">
+                    <h3>
+                        Enter card details
+                    </h3>
+                    <label for="name">Enter your Name</label>
+                    <input type="text" id="name" name="user-name"
+                    placeholder="Gin" required>
 
+                    <label for="card-number">
+                        Enter card number
+                    </label>
+                    <input type="text" id="card-number" name="user-card-number"
+                    placeholder="1245 53434 343" required>
+
+                    <label for="card-cvv">Enter CVV</label>
+                    <input type="text" id="card-cvv" name="user-card-cvv"
+                    placeholder="Gin" required>
+
+                    <div class="submit-section">
+                        <button type="submit" class="submit-btn">
+                            Pay
+                        </button>
+                    </div>
+                </form>
+            </section>
         </main>
 
     </div>
