@@ -304,7 +304,7 @@ body {
 
 .payment-details {
     position: fixed;
-
+    display: none;
     top: 50%;
     left: 50%;
 
@@ -319,7 +319,9 @@ body {
 
     z-index: 10;
 }
-
+.payment-details.active{
+    display: block;
+}
 
 /* Form */
 
@@ -327,7 +329,18 @@ body {
     display: flex;
     flex-direction: column;
 }
+/* Close button */
+.close-btn{
+    margin-left: auto;
+    border-radius: 50%;
+    border-style: none;
 
+    cursor: pointer;
+}
+
+.close-btn:hover{
+    background-color: gray;
+}
 
 /* Heading */
 
