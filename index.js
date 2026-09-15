@@ -5,8 +5,10 @@ const billSection = document.querySelector(".bill-section")
 
 const billList = document.querySelector(".bill-list")
 const totalBill = document.querySelector(".total-bill")
+const paymentDetails = document.querySelector(".payment-details")
 
 let totalPrice = 0
+
 
 const order = []
 
@@ -26,8 +28,53 @@ document.addEventListener("click", function (e) {
 
         removeOrder(e.target.dataset.id)
     }
-})
 
+    else if (e.target.dataset.action === "order" ){
+        renderPopUp()
+    }
+
+    else if (e.target.dataset.action === "close-btn"){
+        const form = document.getElementById("details-form")
+        if (form) form.reset()
+        paymentDetails.classList.remove("active")
+    }
+})
+function renderPopUp(){
+    paymentDetails.classList.add("active")
+    paymentDetails.innerHTML = `
+    <form id="details-form">
+        <button class="close-btn" data-action="close-btn" >X</button>
+        <h3>
+            Enter card details
+        </h3>
+
+        <label for="name">Enter your Name</label>
+        <input type="text" id="name" name="user-name"
+        placeholder="Gin" required>
+
+        <label for="card-number">
+            Enter card number
+        </label>
+        <input type="text" id="card-number" name="user-card-number"
+        placeholder="1245 53434 343" required>
+
+        <label for="card-cvv">Enter CVV</label>
+        <input type="text" id="card-cvv" name="user-card-cvv"
+        placeholder="Gin" required>
+
+        <div class="submit-section">
+            <button type="submit" class="submit-btn">
+                Pay
+            </button>
+        </div>
+    </form>
+    `
+    
+}
+
+function removePopUp(){
+
+}
 
 function addOrderToArr(id, price, name) {
 
@@ -112,7 +159,6 @@ function removeOrder(id) {
     BillSectionShouldExist()
 
     renderOrder()
-    removeItemPriceFromTotalPrice()
 }
 
 function BillSectionShouldExist(){
