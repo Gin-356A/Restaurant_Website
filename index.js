@@ -3,8 +3,11 @@ import { menuArray } from "./data.js"
 const items = document.querySelector(".items")
 const billSection = document.querySelector(".bill-section")
 
-let billList 
-let totalBill
+const billList = document.querySelector(".bill-list")
+const totalBill = document.querySelector(".total-bill")
+
+let totalPrice = 0
+
 const order = []
 
 
@@ -30,12 +33,15 @@ function addOrderToArr(id, price, name) {
 
     const existingItem = order.find(item => item.id === id)
 
+    
+
     if (existingItem) {
 
         existingItem.count += 1
 
     } else {
 
+        
         order.push({
             name: name,
             price: Number(price),
@@ -44,47 +50,11 @@ function addOrderToArr(id, price, name) {
         })
     }
 
-    renderBillSection()
-}
-
-
-function renderBillSection() {
-
-    /*
-        The bill section is initially empty.
-
-        On the first click:
-        .bill-list does not exist, so querySelector()
-        returns null. !null is true, therefore we
-        create the bill section.
-
-        On the next click:
-        .bill-list already exists, so querySelector()
-        returns the element. !element is false, so
-        we don't create the bill section again.
-
-        After that, we get references to the newly
-        created elements and update their contents.
-    */
-
-    if (!document.querySelector(".bill-list")) {
-
-        billSection.innerHTML = `
-            <h3>Your Order</h3>
-            <ul class="bill-list"></ul>
-            <div class="total-bill"></div>
-            <div class="order">
-                <button class="order-btn">Complete order</button>
-            </div>
-        `
-    }
-
-    billList = document.querySelector(".bill-list")
-    totalBill = document.querySelector(".total-bill")
-
+    BillSectionShouldExist()
     renderOrder()
-    renderTotalBill()
+
 }
+
 
 
 function renderOrder() {
@@ -121,45 +91,64 @@ function renderOrder() {
     })
 
     billList.innerHTML = text
+    renderTotalBill()
 }
 
 
+
+function removeOrder(id) {
+
+    const index = order.findIndex(item => item.id === id)
+
+    if (index !== -1) {
+
+        order[index].count -= 1
+
+        if (order[index].count === 0) {
+            order.splice(index, 1)
+        }
+    }
+
+    BillSectionShouldExist()
+
+    renderOrder()
+    removeItemPriceFromTotalPrice()
+}
+
+function BillSectionShouldExist(){
+    if(order.length === 0)
+        billSection.classList.remove("active")
+    else
+        billSection.classList.add("active")
+}
+
+
+//Total bill section 
+
+
+
+function addTotal() {
+
+    totalPrice =  order.reduce((total, currentItem) => {
+        return total + (currentItem.count * currentItem.price)
+    }, 0)
+}
+
 function renderTotalBill() {
 
-    const total = addTotal()
-
-    let text = ""
-
-    if (total > 0) {
-
-        text = `
+    addTotal()
+    let text =`
             <h3>Total price:</h3>
-            <p>${total}</p>
+            <p>${totalPrice}</p>
         `
-    }
+    
 
     totalBill.innerHTML = text
 }
 
 
-function addTotal() {
-
-    return order.reduce((total, currentItem) => {
-        return total + (currentItem.count * currentItem.price)
-    }, 0)
-}
 
 
-function removeOrder(id) {
-
-    const existingItem = order.find(item => item.id === id)
-
-    if (existingItem) {
-        existingItem.count -= 1
-    }
-
-    renderBillSection()
-}
 
 
 function render() {
