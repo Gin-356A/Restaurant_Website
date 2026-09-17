@@ -399,3 +399,23 @@ body {
 
     cursor: pointer;
 }
+
+/* =========================
+   Thank You Message
+========================= */
+
+.message{
+    margin: 50px auto;
+    text-align: center;
+    background-color: #ECFDF5;
+    width: 510px;
+    height: 120px;
+    font-size: 25px;
+    display: none;
+    justify-content: center;
+    color: #065F46;
+}
+
+.message.active{
+    display: flex;
+}

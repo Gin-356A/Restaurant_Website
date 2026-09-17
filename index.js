@@ -6,6 +6,7 @@ const billSection = document.querySelector(".bill-section")
 const billList = document.querySelector(".bill-list")
 const totalBill = document.querySelector(".total-bill")
 const paymentDetails = document.querySelector(".payment-details")
+const message = document.querySelector(".message")
 
 let totalPrice = 0
 
@@ -34,11 +35,29 @@ document.addEventListener("click", function (e) {
     }
 
     else if (e.target.dataset.action === "close-btn"){
-        const form = document.getElementById("details-form")
-        if (form) form.reset()
+
         paymentDetails.classList.remove("active")
     }
+    
+    
 })
+
+document.addEventListener("submit", function(e) {
+
+    e.preventDefault()
+
+    const formData = new FormData(e.target)
+
+    const name = formData.get("user-name")
+    const cardNumber = formData.get("user-card-number")
+    const cvv = formData.get("user-card-cvv")
+
+    console.log(name, cardNumber, cvv)
+
+    showMessage()
+})
+
+
 function renderPopUp(){
     paymentDetails.classList.add("active")
     paymentDetails.innerHTML = `
@@ -47,7 +66,6 @@ function renderPopUp(){
         <h3>
             Enter card details
         </h3>
-
         <label for="name">Enter your Name</label>
         <input type="text" id="name" name="user-name"
         placeholder="Gin" required>
@@ -63,7 +81,7 @@ function renderPopUp(){
         placeholder="Gin" required>
 
         <div class="submit-section">
-            <button type="submit" class="submit-btn">
+            <button type="submit" class="submit-btn" data-action="pay">
                 Pay
             </button>
         </div>
@@ -72,9 +90,17 @@ function renderPopUp(){
     
 }
 
-function removePopUp(){
+function showMessage(){
+    message.classList.add("active")
+    message.innerHTML=`
+    <p>Thank, James! Your order is on its way</p>
+    `
+    const button = document.querySelector(".add-btn")
+    button.disabled = true
 
+    paymentDetails.classList.remove("active")
 }
+
 
 function addOrderToArr(id, price, name) {
 
