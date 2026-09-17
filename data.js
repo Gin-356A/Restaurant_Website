@@ -7,8 +7,8 @@ export const menuArray = [
         emoji: "🍕"
     },
     {
-        name: "Hamburger",
-        ingredients: ["beef", "cheese", "lettuce"],
+        name: "Burger",
+        ingredients: ["Chicken", "cheese", "lettuce"],
         price: 12,
         emoji: "🍔",
         id: 1
